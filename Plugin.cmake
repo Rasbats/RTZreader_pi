@@ -13,7 +13,7 @@
 # -------- Options ----------
 
 set(OCPN_TEST_REPO
-    "mike-rossiter/rtzroute-alpha"
+    "opencpn/rtzreader-alpha"
     CACHE STRING "Default repository for untagged builds"
 )
 
@@ -70,6 +70,9 @@ endmacro ()
 
 macro(add_plugin_libraries)
   # Add libraries required by this plugin
+
+  add_subdirectory("libs/libxercesc")
+  target_link_libraries(${PACKAGE_NAME} ocpn::xercesc)
 
   add_subdirectory("${CMAKE_SOURCE_DIR}/opencpn-libs/pugixml")
   target_link_libraries(${PACKAGE_NAME} ocpn::pugixml)
