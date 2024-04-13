@@ -23,6 +23,7 @@ else ()
 
   include(FindXercesC)
   find_package (XercesC REQUIRED)
+  add_library(XML INTERFACE)
   add_library(XercesC ALIAS XML)
   target_include_directories(XML INTERFACE ${XercesC_INCLUDE_DIRS})
   target_link_libraries(XML INTERFACE ${XercesC_LIBRARIES})
