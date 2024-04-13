@@ -21,7 +21,6 @@ if (WIN32)
   add_library(ocpn::xercesc ALIAS _XERCES)
 else ()
   FindXercesC
-  add_library(_XercesC INTERFACE)
   add_library(XercesC ALIAS _XercesC)
   target_include_directories(_XercesC INTERFACE ${XercesC_INCLUDE_DIRS})
   target_link_libraries(_XercesC INTERFACE ${XercesC_LIBRARIES})
