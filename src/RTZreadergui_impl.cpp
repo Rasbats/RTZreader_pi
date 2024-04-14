@@ -383,6 +383,21 @@ void Dlg::OnValidate(wxCommandEvent& event) {
       // wxString show = dlg.GetPath();
       // wxMessageBox(show);
 
+      pugi::xml_document xmlDoc;
+      pugi::xml_parse_result result = xmlDoc.load_file(
+          dlg.GetPath().mb_str(), parse_default | parse_declaration);
+
+      string rtz_version = xmlDoc.child("route").attribute("version").value();
+
+      if (rtz_version == "1.0") {
+        m_choiceSchema->SetSelection(0);
+      } else if (rtz_version == "1.1") {
+        m_choiceSchema->SetSelection(1);
+      } else if (rtz_version == "1.2") {
+        m_choiceSchema->SetSelection(2);
+      }
+
+
       if (dlg.GetPath().Right(3) == "rtz" || dlg.GetPath().Right(3) == "RTZ") {
         wxString schemaSelection = m_choiceSchema->GetStringSelection();
         if (schemaSelection == wxEmptyString) {

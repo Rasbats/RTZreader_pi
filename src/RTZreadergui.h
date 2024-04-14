@@ -21,8 +21,8 @@
 #include <wx/settings.h>
 #include <wx/stattext.h>
 #include <wx/statline.h>
-#include <wx/textctrl.h>
 #include <wx/choice.h>
+#include <wx/textctrl.h>
 #include <wx/dialog.h>
 
 ///////////////////////////////////////////////////////////////////////////
@@ -40,12 +40,10 @@ class m_Dialog : public wxDialog
 		wxStaticText* m_staticText15111;
 		wxButton* m_button31112;
 		wxButton* m_button31113;
-		wxStaticLine* m_staticline7;
-		wxStaticLine* m_staticline71;
+		wxStaticLine* m_staticline11;
 		wxStaticText* m_staticText11;
-		wxStaticText* m_staticText7;
-		wxStaticLine* m_staticline5;
-		wxStaticLine* m_staticline8;
+		wxStaticLine* m_staticline10;
+		wxStaticLine* m_staticline13;
 		wxStaticText* m_staticText12;
 
 		// Virtual event handlers, override them in your derived class
@@ -58,7 +56,6 @@ class m_Dialog : public wxDialog
 
 	public:
 		wxButton* m_button311131;
-		wxTextCtrl* m_Route;
 		wxChoice* m_choiceSchema;
 		wxTextCtrl* m_textCtrlShowResult;
 

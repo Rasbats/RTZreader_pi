@@ -48,11 +48,8 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_button31113 = new wxButton( this, wxID_ANY, wxT("Write RTZ"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer71->Add( m_button31113, 0, wxALL|wxEXPAND, 5 );
 
-	m_staticline7 = new wxStaticLine( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
-	bSizer71->Add( m_staticline7, 0, wxEXPAND | wxALL, 5 );
-
-	m_staticline71 = new wxStaticLine( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
-	bSizer71->Add( m_staticline71, 0, wxEXPAND | wxALL, 5 );
+	m_staticline11 = new wxStaticLine( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
+	bSizer71->Add( m_staticline11, 0, wxEXPAND | wxALL, 15 );
 
 	m_button311131 = new wxButton( this, wxID_ANY, wxT("Validate RTZ"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer71->Add( m_button311131, 0, wxALL|wxEXPAND, 5 );
@@ -78,15 +75,11 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer12->Add( m_staticText11, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
 
+	m_staticline10 = new wxStaticLine( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
+	bSizer12->Add( m_staticline10, 0, wxEXPAND | wxALL, 15 );
+
 	wxBoxSizer* bSizer14;
 	bSizer14 = new wxBoxSizer( wxHORIZONTAL );
-
-	m_staticText7 = new wxStaticText( this, wxID_ANY, wxT("Route name :"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText7->Wrap( -1 );
-	bSizer14->Add( m_staticText7, 0, wxALL, 5 );
-
-	m_Route = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer14->Add( m_Route, 0, wxALL, 5 );
 
 
 	bSizer12->Add( bSizer14, 1, wxEXPAND, 5 );
@@ -97,11 +90,8 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_choiceSchema->SetSelection( 0 );
 	bSizer12->Add( m_choiceSchema, 0, wxALL, 5 );
 
-	m_staticline5 = new wxStaticLine( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
-	bSizer12->Add( m_staticline5, 0, wxEXPAND | wxALL, 5 );
-
-	m_staticline8 = new wxStaticLine( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
-	bSizer12->Add( m_staticline8, 0, wxEXPAND | wxALL, 5 );
+	m_staticline13 = new wxStaticLine( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
+	bSizer12->Add( m_staticline13, 0, wxEXPAND | wxALL, 15 );
 
 	wxBoxSizer* bSizer91;
 	bSizer91 = new wxBoxSizer( wxHORIZONTAL );
