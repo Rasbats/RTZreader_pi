@@ -365,63 +365,7 @@ int Dlg::exWriteGPX() {
 }
 
 void Dlg::OnImport(wxCommandEvent& event) {
-  ReadRTZ("t");
-  return;
-  wxFileDialog dlg(
-      this, "Select file", wxEmptyString, wxEmptyString,
-      "GPX (*.gpx) | *.gpx;*.GPX | RTZ files(*.rtz) | *.rtz;*.RTZ | Transas "
-      ".rt3 (*.rt3) | *.rt3;*.rt3 | Transas .rt4 (*.rt4) | *.rt4;*.rt4 | "
-      "Sperry Visonmaster (*.route) | *.route;*.ROUTE",
-      wxFD_OPEN);
-  if (dlg.ShowModal() == wxID_OK) {
-    wxMessageBox(dlg.GetPath());
-    if (dlg.GetPath() != wxEmptyString) {
-      wxString show = dlg.GetPath();
-      wxMessageBox(show);
-
-      if (dlg.GetPath().Right(3) == "gpx" || dlg.GetPath().Right(3) == "GPX") {
-        int r = ReadGPX(dlg.GetPath());
-        if (r != 1) {
-          wxMessageBox("Parse Error");
-        }
-        return;
-      } else {
-        if (dlg.GetPath().Right(3) == "rtz" ||
-            dlg.GetPath().Right(3) == "RTZ") {
-          int r = ReadRTZ(dlg.GetPath());
-          if (r != 1) {
-            wxMessageBox("Parse Error");
-          }
-          return;
-        } else {
-          if (dlg.GetPath().Right(3) == "rt3" ||
-              dlg.GetPath().Right(3) == "RT3") {
-            // plugin->ImportRT3(dlg.GetPath());
-            wxMessageBox("Not yet implemented");
-            return;
-          } else {
-            if (dlg.GetPath().Right(3) == "rt4" ||
-                dlg.GetPath().Right(3) == "RT4") {
-              // plugin->ImportRT4(dlg.GetPath());
-              wxMessageBox("Not yet implemented");
-              return;
-            } else {
-              if (dlg.GetPath().Right(5) == "route" ||
-                  dlg.GetPath().Right(5) == "ROUTE") {
-                // plugin->ImportRT4(dlg.GetPath());
-                wxMessageBox("Not yet implemented");
-                return;
-              }
-            }
-          }
-        }
-      }
-
-    } else
-      wxMessageBox(_("No file entered"));
-
-    event.Skip();
-  }
+  ReadRTZ();
 }
 
 void Dlg::OnExport(wxCommandEvent& event) {
@@ -461,7 +405,7 @@ void Dlg::OnValidate(wxCommandEvent& event) {
 
 void Dlg::OnClose(wxCloseEvent& event) { pPlugIn->OnRTZreaderDialogClose(); }
 
-int Dlg::ReadRTZ(wxString my_file) {
+void Dlg::ReadRTZ() {
   rtz_version = "";
   Position my_position;
   my_positions.clear();
@@ -493,7 +437,7 @@ int Dlg::ReadRTZ(wxString my_file) {
   }
 
   pugi::xml_node pRoot = xmlDoc.child("route").child("routeInfo");
-  if (pRoot == nullptr) return -1;
+  if (pRoot == nullptr) return;
 
   wxString error;
   wxProgressDialog* progressdialog = NULL;
@@ -506,7 +450,7 @@ int Dlg::ReadRTZ(wxString my_file) {
 
   xml_node pRouteNameElement = xmlDoc.child("route").child("routeInfo");
 
-  if (pRouteNameElement == nullptr) return -1;
+  if (pRouteNameElement == nullptr) return;
 
   string route_name = pRouteNameElement.attribute("routeName").value();
   my_position.routeName = route_name;
@@ -514,15 +458,15 @@ int Dlg::ReadRTZ(wxString my_file) {
   // wxMessageBox(s);
 
   xml_node pWaypointsElement = xmlDoc.child("route").child("waypoints");
-  if (pWaypointsElement == nullptr) return -1;
+  if (pWaypointsElement == nullptr) return;
 
   xml_node pListWaypointsElement = pWaypointsElement.child("waypoint");
-  if (pListWaypointsElement == nullptr) return -1;
+  if (pListWaypointsElement == nullptr) return;
 
   while (pListWaypointsElement != nullptr) {
     string value = "nullptr";
     value = pListWaypointsElement.attribute("id").value();
-    if (value == "nullptr") return -1;  // must have id
+    if (value == "nullptr") return;  // must have id
     my_position.wpId = value;
     // wxMessageBox(sti);
 
@@ -534,7 +478,7 @@ int Dlg::ReadRTZ(wxString my_file) {
     }
 
     xml_node pListPositionElement = pListWaypointsElement.child("position");
-    if (pListPositionElement == nullptr) return -1;
+    if (pListPositionElement == nullptr) return;
     while (pListPositionElement != nullptr) {
       string stp = pListPositionElement.attribute("lat").value();
       my_position.lat = stp;
@@ -562,11 +506,9 @@ int Dlg::ReadRTZ(wxString my_file) {
   if (m_Route->GetValue() != wxEmptyString) route_name = m_Route->GetValue();
 
   ChartTheRoute(route_name);
-
-  return 1;
 }
 
-int Dlg::WriteRTZ() {
+void Dlg::WriteRTZ() {
 
   // Select the route from the route table
   wxString route_name = GetRoute();
@@ -658,12 +600,22 @@ int Dlg::WriteRTZ() {
     if (dlg.GetPath() != wxEmptyString) {
       wxString file_name = dlg.GetPath();
 
+      // Route name must be the same as the file name, without file extension
+
+      int fl = file_name.length();
+      wxString rtz_name = file_name.SubString(0, (fl - 5));
+
+      if (route_name != rtz_name) {
+        wxMessageBox(_("RTZ file name must be the same as route name"),
+                     "Error");
+        return;
+      }
+
       xmlDoc.save_file(file_name.mb_str());
-      return 1;
+      return;
     } else
-      return -1;
+      return;
   }
-  return -1;
 }
 
 int Dlg::WriteGPX(wxFileName my_file) {

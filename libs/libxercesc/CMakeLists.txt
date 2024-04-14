@@ -23,10 +23,13 @@ else ()
 
   include(FindXercesC)
   find_package (XercesC REQUIRED)
-  add_library(XML INTERFACE)
-  add_library(XercesC ALIAS XML)
-  target_include_directories(XML INTERFACE ${XercesC_INCLUDE_DIRS})
-  target_link_libraries(XML INTERFACE ${XercesC_LIBRARIES})
-  add_library(ocpn::xercesc ALIAS XML)
+
+  file(GLOB libxerces_dir "${CMAKE_CURRENT_SOURCE_DIR}/xercesc")
+  add_library(_XERCES INTERFACE)
+  target_link_libraries(_XERCES INTERFACE XercesC)
+  target_include_directories(_XERCES INTERFACE ${libxerces_dir}/include)
+  add_library(ocpn::xercesc ALIAS _XERCES)
+
+
 
 endif ()

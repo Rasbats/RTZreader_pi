@@ -189,8 +189,8 @@ public:
     void ValidateRTZ(string schema, string rtz);
 
     bool ReadGPX(wxFileName my_file);
-    int ReadRTZ(wxString my_file);
-    int WriteRTZ();
+    void ReadRTZ();
+    void WriteRTZ();
     int exWriteGPX();
     int WriteGPX(wxFileName my_file);
     wxString GetRoute();
