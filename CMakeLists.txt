@@ -103,7 +103,7 @@ if(UNIX)
 include(FindXercesC)
 find_package(XercesC REQUIRED)
 include_directories( ${XercesC_INCLUDE_DIR} )
-target_link_libraries ( ${CMAKE_BINARY_DIR} ${XercesC_LIBRARY} )
+target_link_libraries ( ${PROJECT_SOURCE_DIR} ${XercesC_LIBRARY} )
 endif()
 
 configure_file(
