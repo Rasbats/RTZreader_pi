@@ -76,7 +76,7 @@ if ("${BUILD_TYPE}" STREQUAL "")
   return ()
 endif ()
 
- 
+
 if (NOT ${BUILD_TYPE} STREQUAL "flatpak")
   # Build package as required (flatpak already dealt with).
   #
@@ -92,12 +92,19 @@ if (NOT ${BUILD_TYPE} STREQUAL "flatpak")
   include(PluginLocalization)
 
   include_directories(BEFORE ${CMAKE_BINARY_DIR}/include)
- 
+
   if (COMMAND add_plugin_libraries)
     add_plugin_libraries()
   endif ()
 
 endif ()
+
+if(UNIX)
+include(FindXercesC)
+find_package(XercesC REQUIRED)
+include_directories( ${XercesC_INCLUDE_DIR} )
+target_link_libraries ( ${PROJECT_NAME} ${XercesC_LIBRARY} )
+endif()
 
 configure_file(
   ${CMAKE_SOURCE_DIR}/config.h.in ${CMAKE_BINARY_DIR}/include/config.h
