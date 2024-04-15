@@ -61,7 +61,7 @@ else ()
       #
       target_include_directories(XERCES INTERFACE ${xercesc_src_dir})
       message (STATUS "include_directories (XercesC_INCLUDE_DIR: ${xercesc_src_dir})")
-
+      target_include_libraries(XERCES INTERFACE ocpn::xercesc)
 
       # Link available libraries
       #
