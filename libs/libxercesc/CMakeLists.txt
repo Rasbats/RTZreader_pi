@@ -59,7 +59,9 @@ else ()
 
       # Add the include files
       #
-      target_include_directories(XERCES INTERFACE "${xercesc_src_dir}/include")
+      target_include_directories(XERCES INTERFACE ${xercesc_src_dir})
+      message (STATUS "include_directories (XercesC_INCLUDE_DIR: ${xercesc_src_dir})")
+
 
       # Link available libraries
       #
