@@ -65,9 +65,8 @@ else ()
       # Link available libraries
       #
       target_link_libraries(XERCES INTERFACE ocpn::xercesc)
-      if (TARGET xercesc::xercesc-io)
-        target_link_libraries(XERCES INTERFACE opencpn::xercesc-io)
-      endif ()
+
+      add_library(ocpn::xercesc ALIAS XERCES)
     endif ()
 
 
