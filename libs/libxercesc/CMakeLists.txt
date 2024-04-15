@@ -57,6 +57,10 @@ else ()
       set(BUILD_SHARED_LIBS FALSE CACHE BOOL "Build shared libs" FORCE)
       add_subdirectory(${xercesc_src_dir} xercesc_bld)
 
+      # Add the include files
+      #
+      target_include_directories(XERCES INTERFACE "${xercesc_src_dir}/include")
+
       # Link available libraries
       #
       target_link_libraries(XERCES INTERFACE ocpn::xercesc)
