@@ -19,5 +19,16 @@ if (WIN32)
   target_link_libraries(_XERCES INTERFACE XERCES)
   target_include_directories(_XERCES INTERFACE ${libxerces_dir}/include)
   add_library(ocpn::xercesc ALIAS _XERCES)
+else ()
+
+  include(FindXercesC)
+  find_package (XercesC REQUIRED)
+
+  add_library(_XERCES INTERFACE)
+  target_link_libraries(_XERCES INTERFACE ${XercesC_LIBRARY})
+  target_include_directories(_XERCES INTERFACE ${XercesC_INCLUDE_DIR))
+  add_library(ocpn::xercesc ALIAS _XERCES)
+
+
 
 endif ()

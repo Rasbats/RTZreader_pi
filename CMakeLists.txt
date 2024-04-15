@@ -99,13 +99,6 @@ if (NOT ${BUILD_TYPE} STREQUAL "flatpak")
 
 endif ()
 
-if(UNIX)
-include(FindXercesC)
-find_package(XercesC REQUIRED)
-include_directories( ${XercesC_INCLUDE_DIR} )
-target_link_libraries ( ${PROJECT_SOURCE_DIR} ${XercesC_LIBRARY} )
-endif()
-
 configure_file(
   ${CMAKE_SOURCE_DIR}/config.h.in ${CMAKE_BINARY_DIR}/include/config.h
   @ONLY
