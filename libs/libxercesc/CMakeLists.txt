@@ -26,7 +26,8 @@ else ()
 
   add_library(_XERCES INTERFACE)
   target_link_libraries(_XERCES INTERFACE ${XercesC_LIBRARY})
-  target_include_directories(_XERCES INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/xercesc/include")
+  message (STATUS "include_directories (XercesC_INCLUDE_DIR: ${XercesC_INCLUDE_DIR})")
+  include_directories(_XERCES INTERFACE ${XercesC_INCLUDE_DIR})
   add_library(ocpn::xercesc ALIAS _XERCES)
 
 endif ()
