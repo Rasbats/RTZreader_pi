@@ -31,6 +31,8 @@
       FetchContent_Populate(xercesc)
       FetchContent_GetProperties(xercesc SOURCE_DIR xercesc_src_dir)
 
+      message (STATUS "include_directories (XercesC_INCLUDE_DIR: ${xercesc_src_dir}")
+
       # Set up build options and build.
       #
       set(BUILD_SHARED_LIBS FALSE CACHE BOOL "Build shared libs" FORCE)
