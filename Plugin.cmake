@@ -71,9 +71,12 @@ endmacro ()
 macro(add_plugin_libraries)
   # Add libraries required by this plugin
 
-  add_subdirectory("libs/libxercesc")
+
+  add_subdirectory("${CMAKE_SOURCE_DIR}/libs/libxercesc")
+  find_path(XERCESC_HEADER xercesc)
+  message(STATUS "Using xercesc from ${XERCESC_HEADER}")
+  target_include_directories(${PACKAGE_NAME} PUBLIC ${XERCESC_HEADER})
   target_link_libraries(${PACKAGE_NAME} ocpn::xercesc)
-  target_include_directories(${CMAKE_SOURCE_DIR} PUBLIC "${CMAKE_SOURCE_DIR}/libs/libxercesc/xercesc/include")
 
   add_subdirectory("${CMAKE_SOURCE_DIR}/opencpn-libs/pugixml")
   target_link_libraries(${PACKAGE_NAME} ocpn::pugixml)
