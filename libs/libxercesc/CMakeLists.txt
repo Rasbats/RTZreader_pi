@@ -59,8 +59,12 @@ else ()
 
       # Add the include files
       #
-      target_include_directories(XERCES INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/xercesc/include")
-      message (STATUS "include_directories (XercesC_INCLUDE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}/xercesc/include)")
+      target_include_directories(XERCES INTERFACE ${xercesc_src_dir}/src)
+      message (STATUS "include_directories (XercesC_INCLUDE_DIR: ${xercesc_src_dir}/src")
+      get_property(dirs DIRECTORY ${xercesc_src_dir}/src PROPERTY INCLUDE_DIRECTORIES)
+        foreach(dir ${dirs})
+          message(STATUS "dir='${dir}'")
+        endforeach()
 
       # Link available libraries
       #
