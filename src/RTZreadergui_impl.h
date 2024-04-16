@@ -191,8 +191,7 @@ public:
     bool ReadGPX(wxFileName my_file);
     void ReadRTZ();
     void WriteRTZ();
-    int exWriteGPX();
-    int WriteGPX(wxFileName my_file);
+
     wxString GetRoute();
 
     vector<Position> my_positions;
