@@ -59,11 +59,8 @@ else ()
 
       # Add the include files
       #
-      string(TOLOWER  ${PACKAGE_NAME} _lc_pkg_name)
-      set(xercesc_incl_path /app/extensions/${_lc_pkg_name}/include)
-      target_include_directories(XERCES INTERFACE  ${xercesc_incl_path})
-
-      message (STATUS "include_directories (XercesC_INCLUDE_DIR: ${xercesc_incl_path})")
+      target_include_directories(XERCES INTERFACE "usr/include")
+      message (STATUS "include_directories (XercesC_INCLUDE_DIR: ${xercesc_bld})")
 
       # Link available libraries
       #
