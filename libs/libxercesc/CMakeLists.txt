@@ -65,6 +65,7 @@ else ()
       # Link available libraries
       #
       target_link_libraries(XERCES INTERFACE ocpn::xercesc)
+      add_library(ocpn::xercesc ALIAS XERCES)
 
     endif ()
 
