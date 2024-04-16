@@ -59,7 +59,7 @@ else ()
 
       # Add the include files
       #
-      target_directories(XERCES INTERFACE ${xercesc_src_dir}/src)
+      include_directories(XERCES INTERFACE ${xercesc_src_dir}/src)
       message (STATUS "include_directories (XercesC_INCLUDE_DIR: ${xercesc_src_dir}/src")
       get_property(dirs DIRECTORY ${xercesc_src_dir} PROPERTY INCLUDE_DIRECTORIES)
         foreach(dir ${dirs})
