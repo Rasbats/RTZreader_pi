@@ -73,7 +73,7 @@ macro(add_plugin_libraries)
 
   add_subdirectory("libs/libxercesc")
   target_link_libraries(${PACKAGE_NAME} ocpn::xercesc)
-  target_include_directories("libs/libxercesc/xercesc/include")
+  target_include_directories(${PACKAGE_NAME} "${CMAKE_SOURCE_DIR}/libs/libxercesc/xercesc/include")
 
   add_subdirectory("${CMAKE_SOURCE_DIR}/opencpn-libs/pugixml")
   target_link_libraries(${PACKAGE_NAME} ocpn::pugixml)
