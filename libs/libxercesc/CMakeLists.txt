@@ -57,19 +57,9 @@ else ()
       set(BUILD_SHARED_LIBS FALSE CACHE BOOL "Build shared libs" FORCE)
       add_subdirectory(${xercesc_src_dir} xercesc_bld)
 
-      # Add the include files
-      #
-      target_include_directories(${xercesc_src_dir}/src)
-      message (STATUS "include_directories (XercesC_INCLUDE_DIR: ${xercesc_src_dir}/src")
-      #get_property(dirs DIRECTORY ${xercesc_src_dir} PROPERTY INCLUDE_DIRECTORIES)
-      #  foreach(dir ${dirs})
-      #    message(STATUS "dir='${dir}'")
-      #  endforeach()
-
       # Link available libraries
       #
       target_link_libraries(XERCES INTERFACE ocpn::xercesc)
-      add_library(ocpn::xercesc ALIAS XERCES)
 
     endif ()
 
