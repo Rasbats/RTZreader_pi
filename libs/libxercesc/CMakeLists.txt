@@ -59,12 +59,12 @@ else ()
 
       # Add the include files
       #
-      include_directories(XERCES INTERFACE ${xercesc_src_dir}/src)
+      target_include_directories(${xercesc_src_dir}/src)
       message (STATUS "include_directories (XercesC_INCLUDE_DIR: ${xercesc_src_dir}/src")
-      get_property(dirs DIRECTORY ${xercesc_src_dir} PROPERTY INCLUDE_DIRECTORIES)
-        foreach(dir ${dirs})
-          message(STATUS "dir='${dir}'")
-        endforeach()
+      #get_property(dirs DIRECTORY ${xercesc_src_dir} PROPERTY INCLUDE_DIRECTORIES)
+      #  foreach(dir ${dirs})
+      #    message(STATUS "dir='${dir}'")
+      #  endforeach()
 
       # Link available libraries
       #
