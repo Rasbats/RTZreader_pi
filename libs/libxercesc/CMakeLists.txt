@@ -59,9 +59,9 @@ else ()
 
       # Add the include files
       #
-      target_include_directories(XERCES INTERFACE ${xercesc_src_dir}/src)
+      target_include_directories(XERCES INTERFACE ${xercesc_src_dir}/include)
       message (STATUS "include_directories (XercesC_INCLUDE_DIR: ${xercesc_src_dir}/src")
-      get_property(dirs DIRECTORY ${xercesc_src_dir}/src PROPERTY INCLUDE_DIRECTORIES)
+      get_property(dirs DIRECTORY ${xercesc_src_dir}/include PROPERTY INCLUDE_DIRECTORIES)
         foreach(dir ${dirs})
           message(STATUS "dir='${dir}'")
         endforeach()
