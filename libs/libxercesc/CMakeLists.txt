@@ -59,14 +59,13 @@ else ()
 
       # Add the include files
       #
-      target_include_directories(XERCES INTERFACE ${xercesc_src_dir})
-      message (STATUS "include_directories (XercesC_INCLUDE_DIR: ${xercesc_src_dir})")
+      target_include_directories(XERCES INTERFACE ${xercesc_bld}../../)
+      message (STATUS "include_directories (XercesC_INCLUDE_DIR: ${xercesc_bld}../../)")
 
       # Link available libraries
       #
       target_link_libraries(XERCES INTERFACE ocpn::xercesc)
 
-      add_library(ocpn::xercesc ALIAS XERCES)
     endif ()
 
 
