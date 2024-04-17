@@ -80,7 +80,7 @@ macro(add_plugin_libraries)
        message(STATUS "xercesc found")
        message(STATUS "Package folder name: ${CMAKE_SOURCE_DIR}")
        target_include_directories(${CMAKE_SOURCE_DIR}/src PUBLIC ${XERCES_HEADER})
-       target_link_libraries(${PACKAGE_NAME} ocpn::xercesc)
+       target_link_libraries(${CMAKE_SOURCE_DIR} ocpn::xercesc)
     endif()
   endif()
 
