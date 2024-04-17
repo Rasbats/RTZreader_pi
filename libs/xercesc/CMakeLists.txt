@@ -36,12 +36,6 @@
       #
       set(BUILD_SHARED_LIBS FALSE CACHE BOOL "Build shared libs" FORCE)
 
-      message (STATUS "include_directories (XercesC_INCLUDE_DIR: ${xercesc_src_dir}")
-      get_property(dirs DIRECTORY ${xercesc_src_dir} PROPERTY INCLUDE_DIRECTORIES)
-foreach(dir ${dirs})
-  message(STATUS "dir='${dir}'")
-endforeach()
-
       add_subdirectory(${xercesc_src_dir} xercesc_bld)
 
       # Link available libraries
