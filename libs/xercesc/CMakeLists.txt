@@ -43,6 +43,7 @@
           message(STATUS "dir='${dir}'")
         endforeach()
 
+      target_include_directories(${xercesc_src_dir}/include INTERFACE ocpn::xercesc )
       # Link available libraries
       #
       target_link_libraries(XERCES INTERFACE ocpn::xercesc)
