@@ -36,9 +36,9 @@
       #
       set(BUILD_SHARED_LIBS FALSE CACHE BOOL "Build shared libs" FORCE)
 
-      add_subdirectory(${xercesc_current_src_dir} xercesc_bld)
+      add_subdirectory(${xercesc_src_dir} xercesc_bld)
       message(STATUS "Directory here: ${xercesc_current_src_dir}")
-      get_property(dirs DIRECTORY ${xercesc_current_src_dir} PROPERTY INCLUDE_DIRECTORIES)
+      get_property(dirs DIRECTORY ${xercesc_src_dir} PROPERTY INCLUDE_DIRECTORIES)
         foreach(dir ${dirs})
           message(STATUS "dir='${dir}'")
         endforeach()
