@@ -36,14 +36,19 @@
       #
       set(BUILD_SHARED_LIBS FALSE CACHE BOOL "Build shared libs" FORCE)
 
-      add_subdirectory(${xercesc_src_dir} xercesc_bld)
-      message(STATUS "Directory here: ${xercesc_bld}")
-      get_property(dirs DIRECTORY ${xercesc_bld} PROPERTY INCLUDE_DIRECTORIES)
-        foreach(dir ${dirs})
-          message(STATUS "dir='${dir}'")
-        endforeach()
+      #add_subdirectory(${xercesc_src_dir} xercesc_bld)
 
-      target_include_directories(${xercesc_bld}/include INTERFACE ocpn::xercesc )
+      string(TOLOWER  ${PACKAGE_NAME} _lc_pkg_name)
+      set(xercesc_incl_path ${xercesc_src_dir}/include)
+      target_include_directories(XERCES INTERFACE  ${xercesc_incl_path})
+
+      #message(STATUS "Directory here: ${xercesc_bld}")
+     # get_property(dirs DIRECTORY ${xercesc_bld} PROPERTY INCLUDE_DIRECTORIES)
+      #  foreach(dir ${dirs})
+      #    message(STATUS "dir='${dir}'")
+      #  endforeach()
+
+     # target_include_directories(${xercesc_bld}/include INTERFACE ocpn::xercesc )
       # Link available libraries
       #
       target_link_libraries(XERCES INTERFACE ocpn::xercesc)
