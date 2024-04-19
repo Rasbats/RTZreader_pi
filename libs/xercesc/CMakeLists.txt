@@ -39,7 +39,7 @@
       add_subdirectory(${xercesc_src_dir} xercesc_bld)
 
       #string(TOLOWER  ${PACKAGE_NAME} _lc_pkg_name)
-      set(xercesc_incl_path ${xercesc_src_dir}/include)
+      set(xercesc_incl_path ${xercesc_src_dir}/src)
       target_include_directories(XERCES INTERFACE  ${xercesc_incl_path})
 
       #message(STATUS "Directory here: ${xercesc_bld}")
