@@ -43,8 +43,8 @@
         if("${XERCES_HEADER}" MATCHES ".*-NOTFOUND")
           message(STATUS "xercesc not found")
         else ()
-            message(STATUS "xercesc includes may be here:${XERCES_HEADER}/include")
-            target_include_directories(${PACKAGE_NAME} PUBLIC ${XERCES_HEADER}/include)
+            message(STATUS "xercesc includes may be here:${XERCES_HEADER}")
+            target_include_directories(${PACKAGE_NAME} PUBLIC ${XERCES_HEADER})
         endif()
 
       #message(STATUS "Directory here: ${xercesc_bld}")
