@@ -39,9 +39,14 @@
       add_subdirectory(${xercesc_src_dir} xercesc_bld)
 
       # Get the include directories
-      file(GLOB xercesc_incl_dir "${CMAKE_SOURCE_DIR}/include")
-      message(STATUS "Include directory is now: ${CMAKE_SOURCE_DIR}/include")
-      target_include_directories(XERCES INTERFACE  ${xercesc_incl_dir})
+       add_subdirectory("${CMAKE_SOURCE_DIR}/libs/xercesc")
+        find_path(XERCES_HEADER xercesc)
+        if("${XERCES_HEADER}" MATCHES ".*-NOTFOUND")
+          message(STATUS "xercesc not found")
+        else ()
+            message(STATUS "xercesc includes may be here:${XERCES_HEADER}")
+            target_include_directories(${PACKAGE_NAME} PUBLIC ${XERCES_HEADER})
+        endif()
 
       #message(STATUS "Directory here: ${xercesc_bld}")
      # get_property(dirs DIRECTORY ${xercesc_bld} PROPERTY INCLUDE_DIRECTORIES)
