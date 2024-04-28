@@ -39,8 +39,8 @@
       add_subdirectory(${xercesc_src_dir} xercesc_bld)
 
       # Get the include directories
-      file(GLOB libxerces_incl_dir "${CMAKE_CURRENT_SOURCE_DIR}/include")
-      message(STATUS "${CMAKE_CURRENT_SOURCE_DIR}/include")
+      file(GLOB xercesc_incl_dir "${CMAKE_CURRENT_SOURCE_DIR}/include")
+      message(STATUS "Include directory is now: ${CMAKE_CURRENT_SOURCE_DIR}/include")
       target_include_directories(XERCES INTERFACE  ${xercesc_incl_dir})
 
       #message(STATUS "Directory here: ${xercesc_bld}")
