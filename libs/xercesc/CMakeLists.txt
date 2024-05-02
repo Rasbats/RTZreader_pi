@@ -31,7 +31,6 @@
       FetchContent_Populate(xercesc)
       FetchContent_GetProperties(xercesc SOURCE_DIR xercesc_src_dir)
 
-
       # Set up build options and build.
       #
       set(BUILD_SHARED_LIBS FALSE CACHE BOOL "Build shared libs" FORCE)
@@ -47,15 +46,6 @@
             target_include_directories(${PACKAGE_NAME} PUBLIC ${XERCES_HEADER})
         endif()
 
-      #message(STATUS "Directory here: ${xercesc_bld}")
-     # get_property(dirs DIRECTORY ${xercesc_bld} PROPERTY INCLUDE_DIRECTORIES)
-      #  foreach(dir ${dirs})
-      #    message(STATUS "dir='${dir}'")
-      #  endforeach()
-
-     # target_include_directories(${xercesc_bld}/include INTERFACE ocpn::xercesc )
-      # Link available libraries
-      #
       target_link_libraries(XERCES INTERFACE ocpn::xercesc)
 
     endif ()
