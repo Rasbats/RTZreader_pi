@@ -355,12 +355,13 @@ void Dlg::WriteRTZ() {
 
   if (dlg.ShowModal() == wxID_OK) {
     if (dlg.GetPath() != wxEmptyString) {
-      wxString file_name = dlg.GetPath();
+      wxString file_name = dlg.GetFilename();
+      wxString file_path = dlg.GetPath();
 
       // Route name must be the same as the file name, without file extension
 
       int fl = file_name.length();
-      wxString rtz_name = file_name.SubString(0, (fl - 5));
+      wxString rtz_name = file_name.SubString(0, (fl - 5));      
 
       if (route_name != rtz_name) {
         wxMessageBox(_("RTZ file name must be the same as route name"),
@@ -368,7 +369,7 @@ void Dlg::WriteRTZ() {
         return;
       }
 
-      xmlDoc.save_file(file_name.mb_str());
+      xmlDoc.save_file(file_path.mb_str());
       return;
     } else
       return;

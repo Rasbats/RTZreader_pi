@@ -23,7 +23,7 @@ set(OCPN_TEST_REPO
 # -------  Plugin setup --------
 
 set(PKG_NAME RTZreader_pi)
-set(PKG_VERSION  0.1.0)
+set(PKG_VERSION  0.1.1)
 set(PKG_PRERELEASE "")  # Empty, or a tag like 'beta'
 
 set(DISPLAY_NAME RTZreader)    # Dialogs, installer artifacts, ...
